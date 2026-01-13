@@ -1,0 +1,110 @@
+#include <iostream>
+using namespace std;
+
+class Node
+{
+public:
+    int data;
+    Node *prev;
+    Node *next;
+    Node(int data, Node *prev = nullptr, Node *next = nullptr)
+    {
+        this->data = data;
+        this->prev = prev;
+        this->next = next;
+    }
+};
+
+class DoublyLinkedList
+{
+private:
+    Node *head;
+
+public:
+    DoublyLinkedList()
+    {
+        head = nullptr;
+    }
+
+    void insertionAtEnd(int val)
+    {
+        Node *temp = new Node(val);
+
+        if (head == nullptr)
+        {
+            head = temp;
+            return;
+        }
+
+        Node *curr = head;
+
+        while (curr->next != nullptr)
+        {
+            curr = curr->next;
+        }
+        curr->next = temp;
+        temp->prev = curr;
+    }
+
+    void insertionAtMiddle(int val, int x)
+    {
+        Node *temp = new Node(val);
+
+        if (head == nullptr)
+        {
+            head = temp;
+            return;
+        }
+
+        Node *curr = head;
+        while (curr != nullptr)
+        {
+            if (curr->data == x)
+            {
+
+                // if insertion at last node
+                if (curr->next == nullptr)
+                {
+                    curr->next = temp;
+                    temp->prev = curr;
+                }
+                // if insertion in middle
+                else
+                {
+                    temp->next = curr->next;
+                    curr->next->prev = temp;
+                    curr->next = temp;
+                    temp->prev = curr;
+                }
+                return;
+            }
+            curr = curr->next;
+        }
+
+        cout << "Value " << x << " not found in list\n";
+    }
+
+    void display()
+    {
+        Node *curr = head;
+        while (curr != nullptr)
+        {
+            cout << curr->data << " <--> ";
+            curr = curr->next;
+        }
+
+        cout << "NULL\n";
+    }
+};
+
+int main()
+{
+    DoublyLinkedList list;
+    list.insertionAtEnd(10);
+    list.insertionAtEnd(15);
+    list.insertionAtEnd(25);
+    list.insertionAtEnd(30);
+    list.insertionAtMiddle(20, 15);
+    list.insertionAtMiddle(100,30);
+    list.display();
+}
