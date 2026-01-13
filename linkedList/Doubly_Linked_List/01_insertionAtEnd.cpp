@@ -42,7 +42,7 @@ class DoublyLinkedList{
     void display(){
         Node* curr = head;
         while(curr != nullptr){
-            cout<<curr->data<<" -> ";
+            cout<<curr->data<<" <--> ";
             curr = curr->next;
         }
 
