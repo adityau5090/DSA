@@ -92,7 +92,54 @@ class CircularLL{
         
     }
     
-    
+    void deleteAtIndex(int index){
+
+        if(head == nullptr){
+            cout<<"List is empty";
+            return;
+        }
+
+        if(index == 0){
+
+            // delete single element
+            if(head->next == head){
+                Node* del = head;
+                head = nullptr;
+                cout<<"Value "<<del->data<<" at index 0 deleted\n";
+                delete del;
+                return;
+            }
+            Node* del = head;
+            head->next->prev = head->prev;
+            head->prev->next = head->next;
+            head = head->next;
+            cout<<"Value "<<del->data<<" at index 0 deleted\n";
+            delete del;
+            return;
+        }
+
+        Node* curr = head;
+        int i=0;
+
+        while(curr->next != head && i < index){
+            curr = curr->next;
+            i++;
+        }
+
+        if(i != index){
+            cout<<"Index out of range";
+            return;
+        }
+
+        Node* del = curr;
+        curr->next->prev = curr->prev;
+        curr->prev->next = curr->next;
+        cout<<"Value "<<del->data<<" at index "<<i<<" deleted\n";
+        delete del;
+        return;
+
+    }
+
     void display(){
         Node* curr = head;
         do{
@@ -111,5 +158,6 @@ int main(){
     list.insertAtBeginning(5);
     list.insertAtIndex(15,2);
     list.insertAtIndex(25,4);
+    list.deleteAtIndex(5);
     list.display();
 }
