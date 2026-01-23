@@ -22,6 +22,29 @@ class Graph{
         }
     }
 
+    void dfs(int src){
+        vector<int> visited(size,0);
+        vector<int> stack;
+        stack.push_back(src);
+
+        while (!stack.empty()) {
+            int v = stack.back();
+            stack.pop_back();
+
+            if (!visited[v]) {
+                cout << v << " -> ";
+                visited[v] = 1;
+            }
+
+            // push neighbors
+            for (int i = size - 1; i >= 0; i--) {
+                if (matrix[v][i] == 1 && !visited[i]) {
+                    stack.push_back(i);
+                }
+            }
+        }
+        
+    }
 
     void print(){
         for(int i=0; i<size; i++){
@@ -44,7 +67,8 @@ int main() {
 
     g.print();
 
-    
+    cout << "DFS traversal:\n";
+    g.dfs(0);
 
     return 0;
 }
