@@ -47,6 +47,7 @@ class MinStack{
     stack<int> st;
     int min = INT_MAX;
 
+    public:
     void push(int val){
         if(st.empty()){
             min = val;
@@ -74,8 +75,37 @@ class MinStack{
         }
     }
 
+    void top(){
+        if(st.empty()) return ;
+
+        int x = st.top();
+
+        if(x > min){
+            cout<<"Top :"<<x;
+            return;
+        }
+
+        cout<<"Top :"<<min;
+    }
+
+    void getMin(){
+        if(st.empty()) return;
+        cout<<"Min : "<<min<<"\n";
+    }
 };
 
 int main(){
-    cout<<INT_MAX;
+    MinStack s;
+    s.push(3);
+    s.push(7);
+    s.getMin();
+    s.push(4);
+    s.push(9);
+    s.push(2);
+    s.getMin();
+    s.pop();
+    s.getMin();
 }
+
+                                    // Time complexity -> O(1)
+                                    // Space complexity -> O(n) 
