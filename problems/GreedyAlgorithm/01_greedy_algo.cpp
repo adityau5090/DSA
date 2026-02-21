@@ -1,4 +1,5 @@
                         // Striver's Greedy algorithm Playlist
+/* We have to satisfy the greed by assgin cookies to them. Remember the cookies must have grater than or equal to greed which it have to be assign. We can not reuse cookies once it assigned */
 
 #include<iostream>
 #include<vector>
