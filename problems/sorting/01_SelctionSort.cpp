@@ -1,3 +1,6 @@
+// Selection sort taking minimum to the front
+// Time complexity = O(n^2)
+ 
 #include<iostream>
 #include<vector>
 using namespace std;
