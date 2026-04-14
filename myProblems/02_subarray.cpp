@@ -1,5 +1,3 @@
-// Find longest subarray with sum K  [Subarray -> contiguous part of array]
-
 #include<iostream>
 #include<climits>
 
