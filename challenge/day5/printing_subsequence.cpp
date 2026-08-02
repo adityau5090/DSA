@@ -15,8 +15,11 @@ using namespace std;
             return;
         }
 
+        // pick the particular index into subsequence
         res.push_back(arr[i]);
         printSubSequence(i+1, arr,res);
+
+        // don't pick the particular index into subsequence
         res.pop_back();
         printSubSequence(i+1, arr,res);
     }
@@ -25,3 +28,10 @@ int main(){
     printSubSequence(0, arr);
 return 0;
 }
+
+// time complexity -> 
+//     so for every index we have to option pick or not pick so 2^n
+//     ans to print every subsequnce we take n times                                    s
+//     so overall time-complexity = 2^n * n = 2^n
+
+// space complexity is O(n)
