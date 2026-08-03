@@ -18,6 +18,3 @@ int main(){
     cout<<hashAndSearcrh(arr, 2);
 return 0;
 }
-
-
-// now let do same for characters
