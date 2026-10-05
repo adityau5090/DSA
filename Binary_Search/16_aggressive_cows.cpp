@@ -22,6 +22,22 @@ bool canPlace(vector<int> &stalls, int cows, int distance){
     return false;
 }
 
+//   brute force approach
+int aggressiveCow(vector<int> &stalls, int cows){
+    sort(stalls.begin(), stalls.end());
+    int low = 1, high=stalls[stalls.size()-1] - stalls[0];
+
+    for(int i=1; i<= high; i++){
+        if(canPlace(stalls, cows, i)){
+            continue;
+        }else{
+            return i-1;
+        }
+    }
+    return high;
+}
+
+
 int aggressiveCows(vector<int> &stalls, int cows){
     sort(stalls.begin(), stalls.end());
     // lets define our search space 
@@ -54,8 +70,7 @@ int main() {
 
     int cows = 3;
 
-    cout << "Maximum minimum distance: "<< aggressiveCows(stalls, cows);
-
+    cout << "Maximum minimum distance: "<<aggressiveCows(stalls, cows);
 
     return 0;
 }
