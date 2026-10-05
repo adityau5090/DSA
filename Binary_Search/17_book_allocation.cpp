@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int canAllocate(vector<int> &books, int pages){
+int noOfStudents(vector<int> &books, int pages){
     int stuCount = 1, pageCount = 0;
     for(int i=0; i<books.size(); i++){
         if(pageCount + books[i] > pages){
@@ -20,7 +20,7 @@ int bookAllocate(vector<int> &books, int stu){
     int high = accumulate(books.begin(), books.end(), 0);
 
     for(int i=low; i<= high; i++){
-        if(canAllocate(books, i) <= stu){
+        if(noOfStudents(books, i) <= stu){
             return i;
         }
     }
@@ -34,7 +34,7 @@ int bookAllocation(vector<int> &books, int stu){
     while(low<=high){
         int mid = (low+high)/2;
 
-        if(canAllocate(books, mid) > stu){
+        if(noOfStudents(books, mid) > stu){
             low = mid + 1;
         }else{
             high = mid -1;
